@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="uz" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Virtual Fizika Laboratoriyasi — Interaktiv Simulyatsiyalar</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Maxsus stillar -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body class="bg-slate-950 text-slate-100 flex flex-col min-h-screen">
+
+  <!-- Yuqori Navigatsiya paneli (Header) -->
+  <header class="sticky top-0 z-50 backdrop-blur-md bg-slate-950/80 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        
+        <!-- Logo -->
+        <a href="#dashboard" class="flex items-center gap-3 group">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-cyan-400 flex items-center justify-center text-white text-xl shadow-lg shadow-blue-500/20 group-hover:scale-105 transition">
+            ⚛️
+          </div>
+          <div>
+            <span class="font-bold text-lg text-white tracking-tight flex items-center gap-1.5">
+              Fizika<span class="text-blue-500">Lab</span>
+              <span class="text-[10px] px-1.5 py-0.5 rounded bg-blue-500/20 text-blue-400 border border-blue-500/30">O'zbekcha</span>
+            </span>
+            <p class="text-[10px] text-slate-400 hidden sm:block">Virtual Laboratoriyalar Portali</p>
+          </div>
+        </a>
+
+        <!-- Markaziy Menyu (Desktop) -->
+        <nav class="hidden md:flex items-center gap-1">
+          <a href="#dashboard" data-nav="dashboard" class="nav-link px-3 py-2 text-sm font-medium text-slate-300 hover:text-white transition">
+            Bosh sahifa
+          </a>
+          <a href="#section/mechanics" data-nav="mechanics" class="nav-link px-3 py-2 text-sm font-medium text-slate-400 hover:text-white transition">
+            Mexanika
+          </a>
+          <a href="#section/optics" data-nav="optics" class="nav-link px-3 py-2 text-sm font-medium text-slate-400 hover:text-white transition">
+            Optika
+          </a>
+          <a href="#section/thermodynamics" data-nav="thermodynamics" class="nav-link px-3 py-2 text-sm font-medium text-slate-400 hover:text-white transition">
+            Molekulyar & Termo
+          </a>
+          <a href="#section/nuclear" data-nav="nuclear" class="nav-link px-3 py-2 text-sm font-medium text-slate-400 hover:text-white transition">
+            Atom & Yadro
+          </a>
+        </nav>
+
+        <!-- Qidiruv va boshqaruv -->
+        <div class="flex items-center gap-3">
+          <div class="relative hidden sm:block">
+            <input type="text" id="global-search" placeholder="Qonun yoki tajriba qidirish..." class="w-56 lg:w-64 pl-9 pr-3 py-1.5 bg-slate-900 border border-slate-700/80 rounded-xl text-xs text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition">
+            <span class="absolute left-3 top-2 text-slate-500 text-xs">🔍</span>
+          </div>
+
+          <!-- Mobil menyu tugmasi -->
+          <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobil navigatsiya -->
+    <div id="mobile-menu" class="hidden md:hidden px-4 pt-2 pb-4 border-t border-slate-800 bg-slate-950/95 space-y-1">
+      <a href="#dashboard" class="block px-3 py-2 rounded-lg text-sm text-slate-300 hover:bg-slate-800">Bosh sahifa</a>
+      <a href="#section/mechanics" class="block px-3 py-2 rounded-lg text-sm text-slate-300 hover:bg-slate-800">⚙️ Mexanika</a>
+      <a href="#section/optics" class="block px-3 py-2 rounded-lg text-sm text-slate-300 hover:bg-slate-800">🌈 Optika</a>
+      <a href="#section/thermodynamics" class="block px-3 py-2 rounded-lg text-sm text-slate-300 hover:bg-slate-800">🔥 Molekulyar fizika va termodinamika</a>
+      <a href="#section/nuclear" class="block px-3 py-2 rounded-lg text-sm text-slate-300 hover:bg-slate-800">☢️ Atom va yadro fizikasi</a>
+    </div>
+  </header>
+
+  <!-- Asosiy ish maydoni (SPA Container) -->
+  <main id="app-main" class="flex-grow">
+    <!-- Bu yerda app.js orqali dinamik sahifalar render qilinadi -->
+  </main>
+
+  <!-- Sayt futeri (Footer) -->
+  <footer class="bg-slate-950 border-t border-slate-800 py-8 text-xs text-slate-400">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2">
+        <span class="text-lg">⚛️</span>
+        <span class="text-white font-semibold">Virtual Fizika Laboratoriyasi</span>
+        <span>— Ilmiy-amaliy ta'limiy platforma</span>
+      </div>
+
+      <div class="flex items-center gap-6">
+        <a href="#section/mechanics" class="hover:text-blue-400 transition">Mexanika</a>
+        <a href="#section/optics" class="hover:text-blue-400 transition">Optika</a>
+        <a href="#section/thermodynamics" class="hover:text-blue-400 transition">Termodinamika</a>
+        <a href="#section/nuclear" class="hover:text-blue-400 transition">Atom fizikasi</a>
+      </div>
+
+      <div>
+        <span>© 2026 FizikaLab. Barcha huquqlar himoyalangan.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Dasturiy ta'minot skriptlari -->
+  <script src="js/data/physics-data.js"></script>
+  <script src="js/utils/physics-math.js"></script>
+  <script src="js/utils/graph-canvas.js"></script>
+
+  <!-- Simulyatsiyalar -->
+  <script src="js/simulations/mechanics-pendulum.js"></script>
+  <script src="js/simulations/mechanics-projectile.js"></script>
+  <script src="js/simulations/optics-refraction.js"></script>
+  <script src="js/simulations/optics-lens.js"></script>
+  <script src="js/simulations/thermo-gas-laws.js"></script>
+  <script src="js/simulations/thermo-carnot.js"></script>
+  <script src="js/simulations/nuclear-photoelectric.js"></script>
+  <script src="js/simulations/nuclear-decay.js"></script>
+
+  <!-- Dastur boshqaruvchisi -->
+  <script src="js/app.js"></script>
+</body>
+</html>
