@@ -1,0 +1,138 @@
+/* Virtual Fizika Laboratoriyasi - Komponentlar Stillari */
+
+/* Bo'lim kartalari */
+.section-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  padding: 1.75rem;
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(51, 65, 85, 0.6);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.section-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--card-accent, #3b82f6);
+  opacity: 0.8;
+  transition: height 0.25s ease;
+}
+
+.section-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(96, 165, 250, 0.4);
+  box-shadow: 0 20px 35px -15px rgba(0, 0, 0, 0.6);
+}
+
+.section-card:hover::before {
+  height: 6px;
+}
+
+/* Laboratoriya kartasi */
+.lab-card {
+  background: rgba(30, 41, 59, 0.4);
+  border: 1px solid rgba(51, 65, 85, 0.5);
+  border-radius: 1rem;
+  padding: 1.25rem;
+  transition: all 0.2s ease;
+}
+
+.lab-card:hover {
+  background: rgba(30, 41, 59, 0.8);
+  border-color: rgba(56, 189, 248, 0.5);
+  transform: translateX(4px);
+}
+
+/* Formulalar kartochkasi */
+.formula-badge {
+  display: inline-block;
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  color: #38bdf8;
+  padding: 0.35rem 0.85rem;
+  border-radius: 0.5rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9rem;
+}
+
+/* Test viktorina varianti */
+.quiz-option {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1.25rem;
+  background: rgba(30, 41, 59, 0.5);
+  border: 1px solid rgba(51, 65, 85, 0.6);
+  border-radius: 0.75rem;
+  color: #e2e8f0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.quiz-option:hover {
+  background: rgba(51, 65, 85, 0.7);
+  border-color: #60a5fa;
+}
+
+.quiz-option.selected {
+  background: rgba(37, 99, 235, 0.2);
+  border-color: #3b82f6;
+  color: #93c5fd;
+}
+
+.quiz-option.correct {
+  background: rgba(16, 185, 129, 0.2) !important;
+  border-color: #10b981 !important;
+  color: #6ee7b7 !important;
+}
+
+.quiz-option.incorrect {
+  background: rgba(239, 68, 68, 0.2) !important;
+  border-color: #ef4444 !important;
+  color: #fca5a5 !important;
+}
+
+/* Laboratoriya o'lchov jadvali */
+.lab-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 0.85rem;
+}
+
+.lab-table th {
+  background: rgba(15, 23, 42, 0.9);
+  color: #94a3b8;
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 2px solid rgba(51, 65, 85, 0.8);
+}
+
+.lab-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(51, 65, 85, 0.4);
+  color: #e2e8f0;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.lab-table tbody tr:hover {
+  background: rgba(30, 41, 59, 0.4);
+}
+
+/* Pulsatsiyalanuvchi nishon */
+@keyframes pulse-ring {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.05); opacity: 0.4; }
+  100% { transform: scale(0.95); opacity: 0.8; }
+}
+
+.pulse-active {
+  animation: pulse-ring 2s infinite ease-in-out;
+}
